@@ -4,14 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_website/constants/colors.dart';
+import 'package:portfolio_website/constants/responsive.dart';
 
 class ModernHeroSection extends StatelessWidget {
   final VoidCallback onViewProjects;
 
-  const ModernHeroSection({
-    super.key,
-    required this.onViewProjects,
-  });
+  const ModernHeroSection({super.key, required this.onViewProjects});
 
   @override
   Widget build(BuildContext context) {
@@ -20,27 +18,19 @@ class ModernHeroSection extends StatelessWidget {
     return Container(
       width: double.infinity,
       color: AppColors.greyBackground,
-      padding: const EdgeInsets.symmetric(
-        horizontal: 60,
-        vertical: 40,
-      ),
+      padding: const EdgeInsets.symmetric(horizontal: 60, vertical: 40),
       child: Column(
         children: [
-
           // TOP NAV MINI
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-
               // LOGO
               Container(
                 padding: const EdgeInsets.only(bottom: 4),
                 decoration: const BoxDecoration(
                   border: Border(
-                    bottom: BorderSide(
-                      color: Colors.black,
-                      width: 1.5,
-                    ),
+                    bottom: BorderSide(color: Colors.black, width: 1.5),
                   ),
                 ),
                 child: Text(
@@ -60,37 +50,28 @@ class ModernHeroSection extends StatelessWidget {
           // MAIN SECTION
           width > 1000
               ? Row(
-            children: [
+                  children: [
+                    // LEFT
+                    Expanded(
+                      flex: 5,
+                      child: HeroLeftSection(onViewProjects: onViewProjects),
+                    ),
 
-              // LEFT
-              Expanded(
-                flex: 5,
-                child: HeroLeftSection(
-                  onViewProjects: onViewProjects,
-                ),
-              ),
+                    const SizedBox(width: 30),
 
-              const SizedBox(width: 30),
-
-              // RIGHT
-              const Expanded(
-                flex: 4,
-                child: HeroRightSection(),
-              ),
-            ],
-          )
+                    // RIGHT
+                    const Expanded(flex: 4, child: HeroRightSection()),
+                  ],
+                )
               : Column(
-            children: [
+                  children: [
+                    HeroLeftSection(onViewProjects: onViewProjects),
 
-              HeroLeftSection(
-                onViewProjects: onViewProjects,
-              ),
+                    const SizedBox(height: 50),
 
-              const SizedBox(height: 50),
-
-              const HeroRightSection(),
-            ],
-          ),
+                    const HeroRightSection(),
+                  ],
+                ),
         ],
       ),
     );
@@ -102,10 +83,8 @@ class ModernHeroSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-
           Row(
             children: [
-
               Text(
                 title,
                 style: GoogleFonts.poppins(
@@ -127,11 +106,7 @@ class ModernHeroSection extends StatelessWidget {
 
           const SizedBox(height: 6),
 
-          Container(
-            height: 1,
-            width: 100,
-            color: Colors.black26,
-          ),
+          Container(height: 1, width: 100, color: Colors.black26),
         ],
       ),
     );
@@ -141,45 +116,25 @@ class ModernHeroSection extends StatelessWidget {
 class HeroLeftSection extends StatelessWidget {
   final VoidCallback onViewProjects;
 
-  const HeroLeftSection({
-    super.key,
-    required this.onViewProjects,
-  });
+  const HeroLeftSection({super.key, required this.onViewProjects});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-
         // WAVE
-        Text(
-          '👋',
-          style: GoogleFonts.poppins(
-            fontSize: 34,
-          ),
-        ),
-
+        Text('👋', style: GoogleFonts.poppins(fontSize: 34)),
 
         // TITLE
         RichText(
           text: TextSpan(
             children: [
-
               TextSpan(
-                text: 'Hello! ',
+                text: 'Ritu Nambath! ',
                 style: GoogleFonts.poppins(
-                  fontSize: 82,
+                  fontSize: Responsive.isDesktop(context) ? 82 : 62,
                   fontWeight: FontWeight.w300,
-                  color: Colors.black,
-                ),
-              ),
-
-              TextSpan(
-                text: 'I’m Ritu',
-                style: GoogleFonts.poppins(
-                  fontSize: 82,
-                  fontWeight: FontWeight.bold,
                   color: Colors.black,
                 ),
               ),
@@ -192,31 +147,28 @@ class HeroLeftSection extends StatelessWidget {
         // ROLE
         Row(
           children: [
+            const Icon(Icons.auto_awesome, size: 30, color: Colors.black),
 
-            Container(
-              width: 120,
-              height: 1.2,
-              color: Colors.black45,
-            ),
+            const SizedBox(width: 18),
 
-            const SizedBox(width: 20),
-
-            Text(
-              'Flutter Developer',
-              style: GoogleFonts.poppins(
-                fontSize: 30,
-                color: Colors.black87,
-                fontWeight: FontWeight.w400,
+            RichText(
+              text: TextSpan(
+                text: "Lead Mobile Developer",
+                style: GoogleFonts.poppins(
+                  fontSize: Responsive.isDesktop(context)
+                      ? 30
+                      : Responsive.isTablet(context)
+                      ? 25
+                      : 20,
+                  color: Colors.black87,
+                  fontWeight: FontWeight.w400,
+                ),
               ),
             ),
 
             const SizedBox(width: 18),
 
-            const Icon(
-              Icons.auto_awesome,
-              size: 30,
-              color: Colors.black,
-            )
+            const Icon(Icons.auto_awesome, size: 30, color: Colors.black),
           ],
         ),
 
@@ -226,7 +178,7 @@ class HeroLeftSection extends StatelessWidget {
         SizedBox(
           width: 700,
           child: Text(
-            'Experienced Flutter and Android Developer with 7+ years of expertise in building scalable mobile applications, modern UI experiences, and production-ready cross-platform solutions.',
+            'Experienced Flutter and Android Developer with 10+ years of expertise in building scalable mobile applications, modern UI experiences, and production-ready cross-platform solutions.',
             style: GoogleFonts.poppins(
               fontSize: 20,
               height: 1.8,
@@ -249,7 +201,6 @@ class HeroLeftSection extends StatelessWidget {
           spacing: 30,
           runSpacing: 20,
           children: [
-
             // PROJECT BUTTON
             Container(
               decoration: BoxDecoration(
@@ -293,10 +244,7 @@ class HeroLeftSection extends StatelessWidget {
                 const resumeUrl = 'assets/resume.pdf';
 
                 html.AnchorElement(href: resumeUrl)
-                  ..setAttribute(
-                    'download',
-                    'Ritu_Nambath_Resume.pdf',
-                  )
+                  ..setAttribute('download', 'Ritu_Nambath_Resume.pdf')
                   ..click();
               },
               child: Container(
@@ -306,16 +254,12 @@ class HeroLeftSection extends StatelessWidget {
                 ),
                 decoration: const BoxDecoration(
                   border: Border(
-                    bottom: BorderSide(
-                      color: Colors.black,
-                      width: 1.5,
-                    ),
+                    bottom: BorderSide(color: Colors.black, width: 1.5),
                   ),
                 ),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-
                     Text(
                       'Download CV',
                       style: GoogleFonts.poppins(
@@ -336,7 +280,7 @@ class HeroLeftSection extends StatelessWidget {
               ),
             ),
           ],
-        )
+        ),
       ],
     ).animate().fade(duration: 700.ms).slideX(begin: -.1);
   }
@@ -346,21 +290,14 @@ class HeroLeftSection extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 20),
       child: Row(
         children: [
-
-          const Icon(
-            Icons.check_rounded,
-            color: Colors.black,
-          ),
+          const Icon(Icons.check_rounded, color: Colors.black),
 
           const SizedBox(width: 16),
 
           Text(
             title,
-            style: GoogleFonts.poppins(
-              fontSize: 18,
-              color: Colors.black87,
-            ),
-          )
+            style: GoogleFonts.poppins(fontSize: 18, color: Colors.black87),
+          ),
         ],
       ),
     );
@@ -375,7 +312,6 @@ class HeroRightSection extends StatelessWidget {
     return Stack(
       alignment: Alignment.center,
       children: [
-
         // GRADIENT
         Positioned(
           top: 0,
@@ -400,10 +336,7 @@ class HeroRightSection extends StatelessWidget {
         Container(
           height: 700,
           width: 520,
-          child: Image.asset(
-            'assets/profile.png',
-            fit: BoxFit.cover,
-          ),
+          child: Image.asset('assets/profile.png', fit: BoxFit.cover),
         ),
 
         // FLOATING CARD
@@ -428,26 +361,19 @@ class HeroRightSection extends StatelessWidget {
     ).animate().fade(duration: 800.ms).slideX(begin: .1);
   }
 
-  Widget floatingCard({
-    required String title,
-    required String subtitle,
-  }) {
+  Widget floatingCard({required String title, required String subtitle}) {
     return Container(
       padding: const EdgeInsets.all(22),
       decoration: BoxDecoration(
         color: Colors.white.withOpacity(.52),
         borderRadius: BorderRadius.circular(24),
         boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(.52),
-            blurRadius: 20,
-          )
+          BoxShadow(color: Colors.black.withOpacity(.52), blurRadius: 20),
         ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-
           Text(
             title,
             style: GoogleFonts.poppins(
@@ -459,12 +385,7 @@ class HeroRightSection extends StatelessWidget {
 
           const SizedBox(height: 10),
 
-          Text(
-            subtitle,
-            style: GoogleFonts.poppins(
-              color: Colors.black87,
-            ),
-          ),
+          Text(subtitle, style: GoogleFonts.poppins(color: Colors.black87)),
         ],
       ),
     );

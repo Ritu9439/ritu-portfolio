@@ -91,8 +91,6 @@ class ServicesSection extends StatelessWidget {
                 ),
               ),
 
-              // BUTTON
-              blackButton(context),
             ],
           )
               : Column(
@@ -147,8 +145,6 @@ class ServicesSection extends StatelessWidget {
               ),
 
               const SizedBox(height: 30),
-
-              blackButton(context),
             ],
           ),
 
@@ -203,42 +199,6 @@ class ServicesSection extends StatelessWidget {
       ),
     );
   }
-
-  Widget blackButton(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.black,
-        borderRadius: BorderRadius.circular(50),
-      ),
-      child: ElevatedButton(
-        onPressed: () {},
-        style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.transparent,
-          shadowColor: Colors.transparent,
-          padding: const EdgeInsets.symmetric(
-            horizontal: 40,
-            vertical: 26,
-          ),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(50),
-          ),
-        ),
-        child: Text(
-          "ALL SERVICES",
-          style: GoogleFonts.poppins(
-            fontWeight: FontWeight.w600,
-            color: Colors.white,
-            fontSize: Responsive.responsiveFont(
-              context,
-              desktop: 16,
-              tablet: 15,
-              mobile: 13,
-            ),
-          ),
-        ),
-      ),
-    );
-  }
 }
 
 class ServiceCard extends StatefulWidget {
@@ -289,7 +249,9 @@ class _ServiceCardState extends State<ServiceCard> {
           ),
         ),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
+
           children: [
 
             Icon(
@@ -307,8 +269,8 @@ class _ServiceCardState extends State<ServiceCard> {
               style: GoogleFonts.poppins(
                 fontSize: Responsive.responsiveFont(
                   context,
-                  desktop: 34,
-                  tablet: 28,
+                  desktop: 30,
+                  tablet: 25,
                   mobile: 22,
                 ),
                 fontWeight: FontWeight.w600,
@@ -322,8 +284,7 @@ class _ServiceCardState extends State<ServiceCard> {
             // SUBTITLE
             Text(
               widget.subtitle,
-              overflow: TextOverflow.ellipsis,
-              maxLines: 2,
+              softWrap: true,
               style: GoogleFonts.poppins(
                 fontSize: Responsive.responsiveFont(
                   context,

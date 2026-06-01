@@ -29,7 +29,7 @@ class PremiumContactSection extends StatelessWidget {
   }
 }
 
-class DesktopContactUI extends StatelessWidget {
+class DesktopContactUI extends StatelessWidget  {
   const DesktopContactUI({super.key});
 
   @override
@@ -55,7 +55,7 @@ class DesktopContactUI extends StatelessWidget {
                       text: "Want to\n",
                       style:
                       GoogleFonts.cormorantGaramond(
-                        fontSize: 120,
+                        fontSize: 80,
                         height: .9,
                         fontWeight: FontWeight.w500,
                         color: Colors.black,
@@ -66,7 +66,7 @@ class DesktopContactUI extends StatelessWidget {
                       text: "start\n",
                       style:
                       GoogleFonts.cormorantGaramond(
-                        fontSize: 120,
+                        fontSize: 80,
                         height: .9,
                         fontStyle: FontStyle.italic,
                         fontWeight: FontWeight.w500,
@@ -78,7 +78,7 @@ class DesktopContactUI extends StatelessWidget {
                       text: "a new\n",
                       style:
                       GoogleFonts.cormorantGaramond(
-                        fontSize: 120,
+                        fontSize: 80,
                         height: .9,
                         fontStyle: FontStyle.italic,
                         fontWeight: FontWeight.w400,
@@ -90,7 +90,7 @@ class DesktopContactUI extends StatelessWidget {
                       text: "project?",
                       style:
                       GoogleFonts.cormorantGaramond(
-                        fontSize: 120,
+                        fontSize: 80,
                         height: .9,
                         fontWeight: FontWeight.w600,
                         color: Colors.black,
@@ -143,19 +143,6 @@ class MobileContactUI extends StatelessWidget {
           ),
         ),
 
-        const SizedBox(height: 30),
-
-        Text(
-          "Or just say hello.",
-
-          style:
-          GoogleFonts.cormorantGaramond(
-            fontSize: 26,
-            fontWeight: FontWeight.w500,
-            color: Colors.black87,
-          ),
-        ),
-
         const SizedBox(height: 60),
 
         const ContactRightSection(),
@@ -196,7 +183,7 @@ class ContactRightSection extends StatelessWidget {
             style:
             GoogleFonts.cormorantGaramond(
               fontSize:
-              Responsive.isMobile(context) ? 36 : 56,
+              Responsive.isMobile(context) ? 20: Responsive.isMobile(context) ? 26: 36,
 
               decoration:
               TextDecoration.underline,
@@ -226,13 +213,7 @@ class ContactRightSection extends StatelessWidget {
               icon: FontAwesomeIcons.instagram,
               title: "Instagram",
                 url: "https://www.instagram.com/startwithandroid/"
-            ),
-
-            socialItem(
-              icon: Icons.code,
-              title: "GitHub",
-                url: "https://www.linkedin.com/in/ritu-nambath-67123856/"
-            ),
+            )
           ],
         ),
 
