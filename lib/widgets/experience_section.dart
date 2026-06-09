@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -418,8 +420,8 @@ class _TimelineCardState extends State<TimelineCard> {
                         style: GoogleFonts.poppins(
                           fontSize:
                           Responsive.isMobile(context)
-                              ? 13
-                              : 16,
+                              ? 11
+                              : 13,
 
                           color: Colors.cyanAccent,
 
@@ -442,8 +444,8 @@ class _TimelineCardState extends State<TimelineCard> {
                     style: GoogleFonts.poppins(
                       fontSize:
                       Responsive.isMobile(context)
-                          ? 26
-                          : 38,
+                          ? 20
+                          : 26,
 
                       fontWeight: FontWeight.bold,
 
@@ -464,8 +466,8 @@ class _TimelineCardState extends State<TimelineCard> {
                     style: GoogleFonts.poppins(
                       fontSize:
                       Responsive.isMobile(context)
-                          ? 16
-                          : 22,
+                          ? 14
+                          : 18,
 
                       color: Colors.white70,
                     ),
@@ -484,8 +486,8 @@ class _TimelineCardState extends State<TimelineCard> {
                     style: GoogleFonts.poppins(
                       fontSize:
                       Responsive.isMobile(context)
-                          ? 14
-                          : 18,
+                          ? 12
+                          : 14,
 
                       height: 1.8,
 
@@ -494,66 +496,55 @@ class _TimelineCardState extends State<TimelineCard> {
                   ),
                 ),
 
-                // SKILLS
-                Wrap(
-                  spacing: 12,
-                  runSpacing: 12,
-
-                  children:
-                  (widget.experience["skills"]
-                  as List<String>)
-                      .map((skill) {
-
-                    return AnimatedContainer(
-
-                      duration:
-                      const Duration(
-                        milliseconds: 300,
+                SizedBox(
+                  height: Responsive.isMobile(context) ? 40 : 48,
+                  child: ScrollConfiguration(
+                    behavior: const MaterialScrollBehavior().copyWith(
+                      dragDevices: {
+                        PointerDeviceKind.touch,
+                        PointerDeviceKind.mouse,
+                      },
+                    ),
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: (widget.experience["skills"] as List<String>)
+                            .map((skill) {
+                          return Padding(
+                            padding: const EdgeInsets.only(right: 12),
+                            child: AnimatedContainer(
+                              duration: const Duration(milliseconds: 300),
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 16,
+                                vertical: 10,
+                              ),
+                              decoration: BoxDecoration(
+                                color: isHovered
+                                    ? Colors.cyanAccent.withOpacity(.12)
+                                    : Colors.white.withOpacity(.04),
+                                borderRadius: BorderRadius.circular(30),
+                                border: Border.all(
+                                  color: isHovered
+                                      ? Colors.cyanAccent.withOpacity(.3)
+                                      : Colors.white10,
+                                ),
+                              ),
+                              child: Text(
+                                skill,
+                                style: GoogleFonts.poppins(
+                                  fontSize: Responsive.isMobile(context)
+                                      ? 11
+                                      : 14,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          );
+                        }).toList(),
                       ),
-
-                      padding:
-                      const EdgeInsets.symmetric(
-                        horizontal: 16,
-                        vertical: 10,
-                      ),
-
-                      decoration: BoxDecoration(
-
-                        color: isHovered
-                            ? Colors.cyanAccent
-                            .withOpacity(.12)
-                            : Colors.white
-                            .withOpacity(.04),
-
-                        borderRadius:
-                        BorderRadius.circular(
-                          30,
-                        ),
-
-                        border: Border.all(
-                          color: isHovered
-                              ? Colors.cyanAccent
-                              .withOpacity(.3)
-                              : Colors.white10,
-                        ),
-                      ),
-
-                      child: Text(
-                        skill,
-
-                        style: GoogleFonts.poppins(
-                          fontSize:
-                          Responsive.isMobile(
-                              context)
-                              ? 11
-                              : 14,
-
-                          color: Colors.white,
-                        ),
-                      ),
-                    );
-                  }).toList(),
-                ),
+                    ),
+                  ),
+                )
               ],
             )
           ),

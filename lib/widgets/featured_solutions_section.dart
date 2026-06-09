@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'expandable_text.dart';
+
 class FeaturedSolutionsSection extends StatelessWidget {
   const FeaturedSolutionsSection({super.key});
 
@@ -13,58 +15,86 @@ class FeaturedSolutionsSection extends StatelessWidget {
     final solutions = [
 
       {
-        "title": "Telemedicine\nPlatform",
+        "title": "Body Roundness\nCalculator",
         "subtitle":
-        "Built scalable healthcare applications with video consultations, appointment systems, and secure communication workflows.",
-        "category": "Healthcare System",
+        "Developed a health and fitness application that calculates the Body Roundness Index (BRI) using height and waist circumference to evaluate body fat distribution and potential health risks. Implemented a more advanced assessment approach compared to traditional BMI by providing better insights into body shape and abdominal fat, helping users understand overall health indicators more accurately.",
+        "category": "Health Analytics",
         "icon": Icons.monitor_heart_outlined,
         "tech": [
-          "Flutter",
-          "BLoC",
-          "OpenTok",
+          "Kotlin",
+          "Jetpack Compose",
+          "MVVM",
           "REST API",
         ],
       },
 
       {
-        "title": "Enterprise\nAudit System",
+        "title": "Fall Risk\nAssessment",
         "subtitle":
-        "Developed operational auditing and compliance management systems with real-time issue tracking and reporting.",
-        "category": "Enterprise Solution",
+        "Developed a health and mobility assessment application designed to evaluate fall risk by analyzing user movement and activity patterns. Implemented features to track steps walked, sit-to-stand performance, walking mobility, balance assessments, and activity monitoring to generate a comprehensive fall risk score.",
+        "category": "Health Analytics",
         "icon": Icons.fact_check_outlined,
         "tech": [
-          "Flutter",
-          "Firebase",
-          "CI/CD",
-          "Bitrise",
+          "Kotlin",
+          "MVVM",
+          "REST API",
+          "Sensors"
         ],
       },
 
       {
-        "title": "Mobility\nAssessment App",
+        "title": "PASAUDIT",
         "subtitle":
-        "Created health and movement analysis systems to evaluate activity patterns and performance metrics.",
-        "category": "Health Analytics",
+        "A mobile auditing tool for inspections, compliance checks, and real-time issue tracking, widely used for quality control and safety audits. Upgraded the app to Android SDK 34 and implemented necessary permission changes.",
+        "category": "Tools",
         "icon": Icons.accessibility_new_rounded,
         "tech": [
-          "Flutter",
-          "Analytics",
-          "Tracking",
-          "Charts",
+          "Java",
+          "MVP",
+          "SQLite",
+          "Location",
         ],
       },
 
       {
-        "title": "Bluetooth Sensor\nIntegration",
-        "subtitle":
-        "Integrated Bluetooth SDK devices for real-time monitoring and hardware communication systems.",
-        "category": "IoT Integration",
-        "icon": Icons.bluetooth_connected_rounded,
+        "title": "APPLOCUM\nUK-Based Medical Staffing Application",
+        "subtitle": "https://play.google.com/store/apps/details?id=com.app.applocum&hl=en_IN"
+        "A mobile and web app for UK medical professionals to manage jobs, schedules, and rewards. Migrated the app from Java to Kotlin, then to Flutter; implemented BLoC, a custom calendar for task tracking, Branch IO for link sharing, and a manual timer notification system.",
+        "category": "Healthcare",
+        "icon": Icons.health_and_safety,
         "tech": [
-          "Bluetooth",
-          "SDK",
-          "Native",
+          "Branch IO",
           "Flutter",
+          "Chat",
+          "Firebase Push notification"
+        ],
+      },
+      {
+        "title": "HEALTHYA\nUK-Based Medical Application",
+        "subtitle":
+        "A platform for remote consultations, appointment booking, and prescription purchases, ensuring secure healthcare services. Migrated the app from Kotlin to Flutter, implemented BLoC for state management, integrated OpenTok for video conferencing with native handling via method channels, and set up Bitrise for automated builds.",
+        "category": "Healthcare",
+        "icon": Icons.health_and_safety,
+        "tech": [
+          "Branch IO",
+          "Flutter",
+          "Opentok",
+          "Chat",
+          "Firebase Push notification"
+        ],
+      },
+      {
+        "title": "CONNECTMYHEALTH\nUK-Based Medical Application",
+        "subtitle":
+        "A platform for remote consultations, appointment booking, and prescription purchases, ensuring secure healthcare services. Migrated the app from Kotlin to Flutter, implemented BLoC for state management, integrated OpenTok for video conferencing with native handling via method channels, and set up Bitrise for automated builds.",
+        "category": "Healthcare",
+        "icon": Icons.health_and_safety,
+        "tech": [
+          "Branch IO",
+          "Flutter",
+          "Opentok",
+          "Chat",
+          "Firebase Push notification"
         ],
       },
     ];
@@ -509,10 +539,10 @@ class _SolutionCardState
 
                   fontSize:
                   width < 600
-                      ? 28
+                      ? 20
                       : width < 1100
-                      ? 34
-                      : 42,
+                      ? 25
+                      : 30,
 
                   fontWeight:
                   FontWeight.bold,
@@ -528,16 +558,20 @@ class _SolutionCardState
               const SizedBox(height: 20),
 
               // SUBTITLE
-              Text(
-                widget.subtitle,
-
+              ExpandableText(
+                text: widget.subtitle,
+                maxLines: 4,
+                overflow: TextOverflow
+                    .ellipsis,
                 style:
                 GoogleFonts.poppins(
 
                   fontSize:
                   width < 600
+                      ? 12
+                      : width < 1100
                       ? 14
-                      : 17,
+                  :16,
 
                   height: 1.9,
 
