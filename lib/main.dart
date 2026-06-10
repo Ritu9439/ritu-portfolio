@@ -15,7 +15,7 @@ class PortfolioApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Ritu Nambath Portfolio',
+      title: 'Ritu Nambath',
       builder: (context, child) => ResponsiveBreakpoints.builder(
         child: child!,
         breakpoints: const [
